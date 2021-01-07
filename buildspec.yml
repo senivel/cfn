@@ -1,19 +1,36 @@
 version: 0.2
 
+run-as: root
+
+env:
+  shell: bash
+  variables: {}
+  paramter-store: {}
+  exported-variables: {}
+  secrets-manager: {}
+
 phases:
   install:
     runtime-versions:
       python: 3.8
   pre_build:
     commands:
-      - echo "Nothing to do in the pre_build phase..." | tee /tmp/foo
+      - echo "In pre_build -- $(pwd)"
+      - echo "In pre_build -- $(ls -lhp)"
+      - env > pre_build_env
   build:
     commands:
-      - echo "Nothing to do in the build phase..." | tee /tmp/foo
+      - echo "In build -- $(pwd)"
+      - echo "In build -- $(ls -lhp)"
+      - env > build_env
   post_build:
     commands:
-      - echo "Nothing to do in the post_build phase..." | tee /tmp/foo
+      - echo "In post_build -- $(pwd)"
+      - echo "In post_build -- $(ls -lhp)"
+      - env > post_build_env
 
 artifacts:
   files:
-    - /tmp/foo
+    - "**/*"
+  name: senivel-out_$(date +%Y-%m-%d)
+  discard-paths: yes
