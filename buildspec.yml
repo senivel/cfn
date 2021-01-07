@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+  pre_build:
+    commands:
+      - echo "Nothing to do in the pre_build phase..." | tee /tmp/foo
+  build:
+    commands:
+      - echo "Nothing to do in the build phase..." | tee /tmp/foo
+  post_build:
+    commands:
+      - echo "Nothing to do in the post_build phase..." | tee /tmp/foo
+
+artifacts:
+  files:
+    - /tmp/foo
