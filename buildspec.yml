@@ -6,7 +6,7 @@ env:
   shell: bash
   variables: {}
   paramter-store: {}
-  exported-variables: {}
+  exported-variables: []
   secrets-manager: {}
 
 phases:
